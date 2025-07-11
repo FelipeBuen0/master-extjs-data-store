@@ -1,0 +1,47 @@
+$base-color-success: dynamic(#66cb9f);
+$base-color-error: dynamic(#f16063);
+$base-color-alert: dynamic(#ffaf6e);
+$base-white-color: dynamic(#f2f2f2);
+
+$primary-color: dynamic(rgba(#1d7496, 80%));
+$primary-color-dark: dynamic(#403e3f);
+$primary-color-light: dynamic(lighten($primary-color, 5%));
+$base-gray-color: dynamic(#a6a6a6);
+$base-color: $primary-color;
+
+::-webkit-scrollbar {
+  background-color: lighten($color, 70%);
+  width: 6px;
+  height: 5px;
+}
+
+/* background of the scrollbar except button or resizer */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: transparent;
+}
+
+/* scrollbar itself */
+::-webkit-scrollbar-thumb {
+  background-color: lighten($color, 30%);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $color;
+  cursor: pointer;
+}
+
+/* set button(top and bottom of the scrollbar) */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+$default-border-radius: 4px;
+
+BODY {
+  background-color: azure;
+}
