@@ -65,42 +65,38 @@ Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
         //</debug>
         const me = this;
         me.callParent([config]);
-        me.addEventHandlers();
-        me._loadLocalStorageData();
+        // me.addEventHandlers();
+        // me._loadLocalStorageData();
     },
     addEventHandlers() {
         //<debug>
         console.log('✅ BaseStore.addEventHandlers');
         //</debug>
         const me = this;
-        Ext.GlobalEvents.on({
-            scope: me,
-            clearAuthentication: me._onClearAuthentication
-        });
     },
     listeners: {
         load(store, records, successful, operation, eOpts) {
-            //<debug>
-            console.log('✅ BaseStore.listeners.load', store, records, successful, operation, eOpts);
-            //</debug>
-            if (store.useLocalStorage && store.storeId && successful) {
-                const data = {
-                    date: new Date(),
-                    data: records.map((record) => (Ext.isFunction(record.getData) ? record.getData() : record))
-                };
-                localStorage.setItem(this._getStoreKey(), Ext.encode(data));
-            }
+            // //<debug>
+            // console.log('✅ BaseStore.listeners.load', store, records, successful, operation, eOpts);
+            // //</debug>
+            // if (store.useLocalStorage && store.storeId && successful) {
+            //     const data = {
+            //         date: new Date(),
+            //         data: records.map((record) => (Ext.isFunction(record.getData) ? record.getData() : record))
+            //     };
+            //     localStorage.setItem(this._getStoreKey(), Ext.encode(data));
+            // }
         }
     },
     load(options) {
-        //<debug>
-        console.log('✅ BaseStore.load', options);
-        //</debug>
-        const me = this;
-        if (!me._hasLocalStorageData()) {
-            this.callParent([options]);
-            return;
-        }
-        me._loadLocalStorageData();
+        // //<debug>
+        // console.log('✅ BaseStore.load', options);
+        // //</debug>
+        // const me = this;
+        // if (!me._hasLocalStorageData()) {
+        //     this.callParent([options]);
+        //     return;
+        // }
+        // me._loadLocalStorageData();
     }
 });

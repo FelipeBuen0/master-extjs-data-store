@@ -9,6 +9,16 @@ $primary-color-light: dynamic(lighten($primary-color, 5%));
 $base-gray-color: dynamic(#a6a6a6);
 $base-color: $primary-color;
 
+body {
+  font-family: fantasy;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
 ::-webkit-scrollbar {
   background-color: lighten($color, 70%);
   width: 6px;

@@ -4,7 +4,7 @@ Ext.define('JsDaysDataStore.model.Model', {
         namespace: 'JsDaysDataStore.model',
         proxy: {
             type: 'apiProxy',
-            url: `${Ext.manifest.urls.api}/{entityName}s`
+            url: `http://localhost:1841/{entityName}s`
         }
     },
     getProxy: function () {
