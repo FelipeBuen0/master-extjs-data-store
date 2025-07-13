@@ -1,10 +1,18 @@
 .main-view {
-    background-color: $base-white-color;
     min-height: 100vh;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    color: $primary-color-dark;
+    background-color: $base-gray-color;
     padding: 8px;
-
+    .main-tab-panel {
+        border-radius: $default-border-radius;
+        display: flex;
+        justify-content: start !important;
+        .x-toolbar {
+            align-items: start !important;
+        }
+        .x-tab {
+            width: 280px;
+        }
+    }
     .main-header {
         font-size: 2rem;
         font-weight: 600;
@@ -16,8 +24,12 @@
         background: #fff;
         border-radius: $default-border-radius;
         box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
-        padding: 24px;
+        padding: 8px;
         margin-bottom: 8px;
+        align-items: start;
+        display: flex;
+        flex: 1;
+        width: 100vw;
         height: 100vh;
         border: 1px solid #e1e4ea;
     }
@@ -38,20 +50,5 @@
             font-weight: 500;
             margin-right: auto;
         }
-    }
-    .main-footer {
-        background: #fff;
-        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
-        border-radius: $default-border-radius;
-        padding: 8px;
-        font-size: 12px;
-        font-weight: 400;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        display: flex;
-        align-items: start;
-        margin: 0px
     }
 }

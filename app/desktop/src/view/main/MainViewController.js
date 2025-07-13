@@ -9,28 +9,37 @@ Ext.define('JsDaysDataStore.view.main.MainViewController', {
         }
     },
 
+    setActivePanel: function(panelId) {
+        var contentContainer = this.lookupReference('contentContainer');
+        var layout = contentContainer.getLayout();
+        var index = contentContainer.items.findIndex('itemId', panelId);
+        if (index !== -1) {
+            layout.setActiveItem(index);
+        }
+    },
+
     onDashboardClick: function() {
-        this.showPanel(0);
+        this.setActivePanel('dashboardPanel');
     },
 
     onGridClick: function() {
-        this.showPanel(1);
-    },
-
-    onUsersClick: function() {
-        this.showPanel(2);
+        this.setActivePanel('usersGrid');
     },
 
     onFiltersClick: function() {
-        this.showPanel(3);
+        this.setActivePanel('filtersPanel');
     },
 
     onEventsClick: function() {
-        this.showPanel(4);
+        this.setActivePanel('eventsPanel');
+    },
+
+    onPerformanceClick: function() {
+        this.setActivePanel('performancePanel');
     },
 
     onSettingsClick: function() {
-        this.showPanel(5);
+        this.setActivePanel('settingsPanel');
     },
 
     onFilterChange: function(field, newValue) {

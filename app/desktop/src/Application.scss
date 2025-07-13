@@ -1,11 +1,13 @@
+
 $base-color-success: dynamic(#66cb9f);
 $base-color-error: dynamic(#f16063);
 $base-color-alert: dynamic(#ffaf6e);
 $base-white-color: dynamic(#f2f2f2);
 
-$primary-color: dynamic(rgba(#1d7496, 80%));
-$primary-color-dark: dynamic(#403e3f);
+$primary-color: dynamic(#01587e);
+$primary-color-dark: dynamic(darken($primary-color, 10%));
 $primary-color-light: dynamic(lighten($primary-color, 5%));
+$background-color: dynamic(#e6e6e6);
 $base-gray-color: dynamic(#a6a6a6);
 $base-color: $primary-color;
 
