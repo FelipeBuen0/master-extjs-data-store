@@ -7,19 +7,86 @@ Ext.define('JsDaysDataStore.view.main.DashboardPanel', {
     },
     items: [
         {
-            xtype: 'component',
-            html: '<h2>Resumo dos Dados</h2>',
-            margin: '0 0 16 0'
+            xtype: 'toolbar',
+            docked: 'top',
+            items: [
+                {
+                    xtype: 'textfield',
+                    fieldLabel: 'Query',
+                    labelAlign: 'top',
+                    bind: {
+                        value: '{query}'
+                    },  
+                    width: 300,
+                    emptyText: 'Type your query...'
+                },
+                {
+                    xtype: 'button',
+                    text: 'Search',
+                    handler: 'queryNews'
+                }
+            ]
         },
         {
-            xtype: 'component',
-            html: '<p>Aqui você pode exibir estatísticas, gráficos ou KPIs usando dados da Store.</p>',
-            margin: '0 0 16 0'
-        },
-        {
-            xtype: 'component',
-            itemId: 'usersStats',
-            html: '<ul><li>Total de usuários: <b>...</b></li><li>Ativos: <b>...</b></li><li>Inativos: <b>...</b></li></ul>'
+            xtype: 'componentdataview',
+            bind: {
+                store: '{newsStore}'
+            },
+            layout: {
+                type: 'vbox',
+                align: 'stretch',
+                wrap: true
+            },
+            itemConfig: {
+                viewModel: true,
+                xtype: 'container',
+                cls: 'news-card',
+                layout: 'hbox',
+                padding: 8,
+                items: [{
+                    xtype: 'image',
+                    cls: 'news-image',
+                    style: {
+                        width: '120px',
+                        height: '120px',
+                        'object-fit': 'cover',
+                        'border-radius': '8px',
+                        'box-shadow': '0 2px 8px rgba(0,0,0,0.12)'
+                    },
+                    bind: {
+                        src: '{record.urlToImage}'
+                    }
+                }, {
+                    xtype: 'container',
+                    layout: 'vbox',
+                    style: {
+                        padding: '0 0 0 16px',
+                        flex: 1
+                    },
+                    items: [{
+                        xtype: 'component',
+                        cls: 'text-large',
+                        bind: {
+                            html: '<div>{record.title}</div>'
+                        }
+                    }, {
+                        xtype: 'component',
+                        cls: 'text-medium',
+                        bind: {
+                            html: '<div>{record.description}</div>'
+                        }
+                    }, {
+                        xtype: 'component',
+                        cls: 'text-small',
+                        bind: {
+                            html: '<div>by: {record.author}</div>'
+                        }
+                    }]
+                }]
+            },
+            listeners: {
+                childtap: 'onChildTap'
+            }
         }
     ]
 });

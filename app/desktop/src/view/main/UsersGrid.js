@@ -3,7 +3,7 @@ Ext.define('JsDaysDataStore.view.main.UsersGrid', {
     xtype: 'users-grid',
     title: 'Usuários',
     store: {
-        type: 'users'
+        type: 'news'
     },
     columns: [
         { text: 'ID', dataIndex: 'id', width: 60 },

@@ -3,6 +3,25 @@ Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
     config: {
         useLocalStorage: false
     },
+    proxy: {
+        type: 'ajax',
+        url: `${Ext.manifest.api.url}/everything`,
+        reader: { type: 'json', rootProperty: 'articles' },
+    },
+    listeners: {
+        load(store, records, successful, operation, eOpts) {
+            //<debug>
+            console.log('✅ BaseStore.listeners.load', store, records, successful, operation, eOpts);
+            //</debug>
+            if (store.useLocalStorage && store.storeId && successful) {
+                const data = {
+                    date: new Date(),
+                    data: records.map((record) => (Ext.isFunction(record.getData) ? record.getData() : record))
+                };
+                localStorage.setItem(this._getStoreKey(), Ext.encode(data));
+            }
+        }
+    },
     privates: {
         _getStoreKey() {
             //<debug>
@@ -14,50 +33,6 @@ Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
             }
             return '';
         },
-        _hasLocalStorageData() {
-            //<debug>
-            console.log('✅ BaseStore._hasLocalStorageData');
-            //</debug>
-            const me = this;
-            const storeKey = me._getStoreKey();
-            if (!storeKey || !me.useLocalStorage) {
-                return false;
-            }
-            const localData = Ext.decode(localStorage.getItem(storeKey), true);
-            if (!localData) {
-                return false;
-            }
-            if (Ext.Date.diff(localData.date, new Date(), Ext.Date.MINUTE) > 120) {
-                return false;
-            }
-            return true;
-        },
-        _loadLocalStorageData() {
-            //<debug>
-            console.log('✅ BaseStore._loadLocalStorageData');
-            //</debug>
-            const me = this;
-            const storeKey = me._getStoreKey();
-            if (!storeKey || !me.useLocalStorage) {
-                return;
-            }
-            const localData = Ext.decode(localStorage.getItem(storeKey), true);
-            if (!localData) {
-                return;
-            }
-            if (Ext.Date.diff(localData.date, new Date(), Ext.Date.MINUTE) > 120) {
-                return;
-            }
-            me.loadData(localData.data, false);
-            me.fireEvent('load', me, localData.data, true);
-            return localData;
-        },
-        _onClearAuthentication() {
-            //<debug>
-            console.log('✅ BaseStore._onClearAuthentication');
-            //</debug>
-            localStorage.removeItem(this._getStoreKey());
-        }
     },
     constructor: function (config) {
         //<debug>
@@ -66,7 +41,6 @@ Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
         const me = this;
         me.callParent([config]);
         // me.addEventHandlers();
-        // me._loadLocalStorageData();
     },
     addEventHandlers() {
         //<debug>
@@ -74,29 +48,4 @@ Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
         //</debug>
         const me = this;
     },
-    listeners: {
-        load(store, records, successful, operation, eOpts) {
-            // //<debug>
-            // console.log('✅ BaseStore.listeners.load', store, records, successful, operation, eOpts);
-            // //</debug>
-            // if (store.useLocalStorage && store.storeId && successful) {
-            //     const data = {
-            //         date: new Date(),
-            //         data: records.map((record) => (Ext.isFunction(record.getData) ? record.getData() : record))
-            //     };
-            //     localStorage.setItem(this._getStoreKey(), Ext.encode(data));
-            // }
-        }
-    },
-    load(options) {
-        // //<debug>
-        // console.log('✅ BaseStore.load', options);
-        // //</debug>
-        // const me = this;
-        // if (!me._hasLocalStorageData()) {
-        //     this.callParent([options]);
-        //     return;
-        // }
-        // me._loadLocalStorageData();
-    }
 });

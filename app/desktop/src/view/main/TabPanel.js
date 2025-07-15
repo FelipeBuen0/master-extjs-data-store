@@ -4,7 +4,8 @@ Ext.define('JsDaysDataStore.view.main.TabPanel', {
     cls: 'main-tab-panel',
     flex: 1,
     defaults: {
-        padding: 8
+        padding: 8,
+        scrollable: true,
     },
     items: [{
         xtype: 'dashboard-panel',
@@ -15,12 +16,8 @@ Ext.define('JsDaysDataStore.view.main.TabPanel', {
         title: 'Grids',
         iconCls: 'x-fas fa-table'
     }, {
-        xtype: 'advanced-filters-panel',
-        title: 'Filtros',
-        iconCls: 'x-fas fa-filter'
-    }, {
         xtype: 'events-panel',
-        title: 'Eventos',
+        title: 'Events',
         iconCls: 'x-fas fa-bolt'
     }, {
         xtype: 'performance-panel',

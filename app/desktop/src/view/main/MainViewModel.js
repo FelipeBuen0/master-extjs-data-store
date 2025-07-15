@@ -1,13 +1,10 @@
 Ext.define('JsDaysDataStore.view.main.MainViewModel', {
-    extend: 'JsDaysDataStore.baseClasses.BaseViewModel',
+    extend: 'Ext.app.ViewModel',
     alias: 'viewmodel.main-view',
     stores: {
-        usersStore: {
-            type: 'users',
-            autoLoad: true,
-            listeners: {
-                load: 'onStoreLoad'
-            }
+        newsStore: {
+            type: 'news',
+            autoLoad: true
         }
     },
 });

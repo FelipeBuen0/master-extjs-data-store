@@ -86,6 +86,10 @@
         "compress": false
       }
     ],
+    "api": {
+      "url": "https://newsapi.org/v2",
+      "apiToken": "b75acf5597864014a62c613923efe32d"
+    },
     "output": {
       "appCache": {
         "enable": false,
@@ -158,6 +162,10 @@
         "path": "main.js"
       }
     ],
+    "api": {
+      "url": "https://newsapi.org/v2",
+      "apiToken": "b75acf5597864014a62c613923efe32d"
+    },
     "material": {
       "toolbar": {
         "color": "#578548",

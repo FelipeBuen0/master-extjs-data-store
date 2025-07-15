@@ -19,8 +19,47 @@ body {
   font-variation-settings:
     "wdth" 100;
 }
-
-
+.news-card {
+    background: #fff;
+    border-radius: $default-border-radius;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    padding: 8px;
+    margin-bottom: 8px;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    border: 1px solid #e1e4ea;
+}
+.news-image {
+    height: 128px;
+    width: 128px;
+    margin: 8px;
+    padding: 8px;
+    border-radius: $default-border-radius;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+.text-large {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: '6px';
+  color: #222 
+}
+.text-medium {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: '4px';
+  width: 1024px;
+  text-align: justify ;
+  color: #444;
+}
+.text-small {
+  font-size: 0.9em;
+  font-weight: 400;
+  margin-bottom: '2px';
+  color: #666;
+} 
 ::-webkit-scrollbar {
   background-color: lighten($color, 70%);
   width: 6px;
