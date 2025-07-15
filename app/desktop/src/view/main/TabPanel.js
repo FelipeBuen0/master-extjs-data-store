@@ -12,8 +12,9 @@ Ext.define('JsDaysDataStore.view.main.TabPanel', {
         title: 'Dashboard',
         iconCls: 'x-fas fa-chart-bar'
     }, {
-        xtype: 'users-grid',
-        title: 'Grids',
+        xtype: 'news-grid',
+        title: 'News Grid',
+        padding: 0,
         iconCls: 'x-fas fa-table'
     }, {
         xtype: 'events-panel',

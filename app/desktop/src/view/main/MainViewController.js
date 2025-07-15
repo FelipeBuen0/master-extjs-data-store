@@ -16,20 +16,7 @@ Ext.define('JsDaysDataStore.view.main.MainViewController', {
             layout.setActiveItem(index);
         }
     },
-    onChildTap (dataview, selected) {
-        debugger;
-        const redirectUrl = selected.record.get('url');
-        window.location = redirectUrl;
-    },
-    queryNews () {
-        var vm = this.getViewModel();
-        var query = vm.get('query');
-        var store = vm.getStore('newsStore');
-        if (store && store.getProxy()) {
-            store.getProxy().setExtraParam('q', query);
-            store.load();
-        }
-    },
+
     onDashboardClick: function() {
         this.setActivePanel('dashboardPanel');
     },
@@ -64,5 +51,19 @@ Ext.define('JsDaysDataStore.view.main.MainViewController', {
 
     onRowSelect: function(grid, record) {
         Ext.Msg.alert('Detalhes', `Nome: ${record.get('name')}`);
-    }
+    },
+        onChildTap (dataview, selected) {
+        debugger;
+        const redirectUrl = selected.record.get('url');
+        window.location = redirectUrl;
+    },
+    queryNews () {
+        var vm = this.getViewModel();
+        var query = vm.get('query');
+        var store = vm.getStore('newsStore');
+        if (store && store.getProxy()) {
+            store.getProxy().setExtraParam('q', query);
+            store.load();
+        }
+    },
 });

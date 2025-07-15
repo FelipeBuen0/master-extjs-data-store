@@ -1,6 +1,6 @@
 .main-view {
     min-height: 100vh;
-    background-color: $base-gray-color;
+    background-color: lighten($base-gray-color, 5%);
     padding: 8px;
     .main-tab-panel {
         border-radius: $default-border-radius;
