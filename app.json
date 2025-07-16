@@ -163,8 +163,9 @@
       }
     ],
     "api": {
-      "url": "https://newsapi.org/v2",
-      "apiToken": "b75acf5597864014a62c613923efe32d"
+      "externalUrl": "https://newsapi.org/v2/everything",
+      "apiToken": "b75acf5597864014a62c613923efe32d",
+      "localUrl": "http://localhost:5000"
     },
     "material": {
       "toolbar": {

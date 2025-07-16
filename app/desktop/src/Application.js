@@ -16,8 +16,8 @@ Ext.define("JsDaysDataStore.Application", {
 
   onAppUpdate() {
     Ext.Msg.confirm(
-      "Atualização de aplicação",
-      "A aplicação possui uma atualização, deseja atualizar agora?",
+      "Application Update",
+      "The application has an update available, would you like to update now?",
       function (choice) {
         if (choice === "yes") {
           window.location.reload();

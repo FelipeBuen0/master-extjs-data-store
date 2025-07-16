@@ -1,33 +1,11 @@
-Ext.define('JsDaysDataStore.view.main.DashboardPanel', {
+Ext.define('JsDaysDataStore.view.recentNews.RecentNewsPanel', {
     extend: 'Ext.Container',
-    xtype: 'dashboard-panel',
-    cls: 'dashboard-panel',
+    xtype: 'recent-news-panel',
+    cls: 'recent-news-panel',
     layout: {
         type: 'vbox'
     },
-    items: [
-        {
-            xtype: 'toolbar',
-            docked: 'top',
-            items: [
-                {
-                    xtype: 'textfield',
-                    fieldLabel: 'Query',
-                    labelAlign: 'top',
-                    bind: {
-                        value: '{query}'
-                    },  
-                    width: 300,
-                    emptyText: 'Type your query...'
-                },
-                {
-                    xtype: 'button',
-                    text: 'Search',
-                    handler: 'queryNews'
-                }
-            ]
-        },
-        {
+    items: [{
             xtype: 'componentdataview',
             bind: {
                 store: '{recentNewsStore}'

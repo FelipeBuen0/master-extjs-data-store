@@ -4,13 +4,13 @@ Ext.define('JsDaysDataStore.store.RecentNewsStore', {
     model: 'JsDaysDataStore.model.news.Model',
     proxy: {
         type: 'apiProxy',
-        url: 'https://newsapi.org/v2/everything',
-        extraParams: {
-            q: 'superman',
-            from: new Date(new Date().setMonth(new Date().getMonth() - 1)).toISOString(),
-            to: new Date().toISOString(),
-            pageSize: 10
-        }
+        url: `${Ext.manifest.api.localUrl}/news`,
+        // extraParams: {
+        //     q: 'superman',
+        //     from: new Date(new Date().setMonth(new Date().getMonth() - 2)).toISOString(),
+        //     to: new Date().toISOString(),
+        //     pageSize: 10
+        // }
     }
 
 });

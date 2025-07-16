@@ -1,15 +1,12 @@
 Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
     extend: 'Ext.data.Store',
-
-    config: {
-        useLocalStorage: false
-    },
-
+    // Use custom ApiProxy for demonstration purposes
     proxy: {
-        type: 'ajax',
-        url: `${Ext.manifest.api.url}/everything`,
+        type: 'apiproxy',
+        url: `${Ext.manifest.api.localUrl}/news`,
         reader: {
             type: 'json',
+            // rootProperty: 'articles' allows the grid to read the array of articles from the response
             rootProperty: 'articles'
         }
     },
@@ -37,6 +34,8 @@ Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
                 status: response.status,
                 message: response.statusText
             });
+            // Show a message box on proxy exception for teaching purposes
+            Ext.Msg.alert('Error', 'Failed to load data from the server.');
         },
         write: function(store, operation) {
             Ext.GlobalEvents.fireEvent('log-store-event', {

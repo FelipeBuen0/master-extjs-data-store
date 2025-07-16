@@ -12,4 +12,8 @@ Ext.define('JsDaysDataStore.view.main.MainViewModel', {
             autoLoad: true
         }
     },
+    data: {
+        searchValue: '',
+        selectedNews: null
+    }
 });

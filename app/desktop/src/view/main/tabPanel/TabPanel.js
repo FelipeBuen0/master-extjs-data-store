@@ -1,4 +1,4 @@
-Ext.define('JsDaysDataStore.view.main.TabPanel', {
+Ext.define('JsDaysDataStore.view.main.tabPanel.TabPanel', {
     extend: 'Ext.tab.Panel',
     xtype: 'main-tab-panel',
     cls: 'main-tab-panel',
@@ -8,9 +8,9 @@ Ext.define('JsDaysDataStore.view.main.TabPanel', {
         scrollable: true,
     },
     items: [{
-        xtype: 'dashboard-panel',
-        title: 'Dashboard',
-        iconCls: 'x-fas fa-chart-bar'
+        xtype: 'recent-news-panel',
+        title: 'Recent News',
+        iconCls: 'x-fas fa-calendar'
     }, {
         xtype: 'news-grid',
         title: 'News Grid',

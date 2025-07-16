@@ -16,11 +16,14 @@ Ext.define('JsDaysDataStore.util.proxies.ApiProxy', {
     noCache: false,
     timeout: 120000,
     actionMethods: {
-        read: 'GET'
+        create: 'POST',
+        read: 'GET',
+        update: 'PATCH',
+        destroy: 'DELETE'
     },
-    extraParams: {
-        apiKey: `${Ext.manifest.api.apiToken}`
-    },
+    // extraParams: {
+    //     apiKey: `${Ext.manifest.api.apiToken}`
+    // },
     reader: {
         type: 'json',
         rootProperty: 'articles',

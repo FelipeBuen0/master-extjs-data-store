@@ -1,4 +1,4 @@
-Ext.define('JsDaysDataStore.view.main.NewsGrid', {
+Ext.define('JsDaysDataStore.view.news.NewsGrid', {
     extend: 'Ext.grid.Grid',
     xtype: 'news-grid',
     title: 'News',
@@ -44,6 +44,6 @@ Ext.define('JsDaysDataStore.view.main.NewsGrid', {
         { dataIndex: 'publishedAt', text: 'Published At', formatter: 'date("Y-m-d H:i:s")', flex: 1 }
     ],
     listeners: {
-        select: 'onRowSelect'
+        childdoubletap: 'onChildDoubleTap'
     }
 });
