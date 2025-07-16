@@ -30,7 +30,7 @@ Ext.define('JsDaysDataStore.view.main.DashboardPanel', {
         {
             xtype: 'componentdataview',
             bind: {
-                store: '{newsStore}'
+                store: '{recentNewsStore}'
             },
             layout: {
                 type: 'vbox',
@@ -75,6 +75,9 @@ Ext.define('JsDaysDataStore.view.main.DashboardPanel', {
                         bind: {
                             html: '<div>{record.description}</div>'
                         }
+                    }, {
+                        xtype: 'component',
+                        flex: 1  
                     }, {
                         xtype: 'component',
                         cls: 'text-small',

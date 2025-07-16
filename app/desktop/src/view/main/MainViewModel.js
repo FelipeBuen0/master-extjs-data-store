@@ -4,6 +4,11 @@ Ext.define('JsDaysDataStore.view.main.MainViewModel', {
     stores: {
         newsStore: {
             type: 'news',
+            pageSize: 100,
+            autoLoad: true,
+        },
+        recentNewsStore: {
+            type: 'recentnews',
             autoLoad: true
         }
     },

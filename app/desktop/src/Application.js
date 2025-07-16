@@ -11,6 +11,7 @@ Ext.define("JsDaysDataStore.Application", {
         xtype: "main-view"
       },
     ]);
+    GlobalLogger.init();
   },
 
   onAppUpdate() {

@@ -1,51 +1,49 @@
 Ext.define('JsDaysDataStore.baseClasses.store.BaseStore', {
     extend: 'Ext.data.Store',
+
     config: {
         useLocalStorage: false
     },
+
     proxy: {
         type: 'ajax',
         url: `${Ext.manifest.api.url}/everything`,
-        reader: { type: 'json', rootProperty: 'articles' },
-    },
-    listeners: {
-        load(store, records, successful, operation, eOpts) {
-            //<debug>
-            console.log('✅ BaseStore.listeners.load', store, records, successful, operation, eOpts);
-            //</debug>
-            if (store.useLocalStorage && store.storeId && successful) {
-                const data = {
-                    date: new Date(),
-                    data: records.map((record) => (Ext.isFunction(record.getData) ? record.getData() : record))
-                };
-                localStorage.setItem(this._getStoreKey(), Ext.encode(data));
-            }
+        reader: {
+            type: 'json',
+            rootProperty: 'articles'
         }
     },
-    privates: {
-        _getStoreKey() {
-            //<debug>
-            console.log('✅ BaseStore._getStoreKey');
-            //</debug>
-            const me = this;
-            if (me.storeId) {
-                return `JsDaysDataStore.baseClasses-store-${me.storeId}`;
-            }
-            return '';
+
+    listeners: {
+        beforeload: function(store, operation) {
+            Ext.GlobalEvents.fireEvent('log-store-event', {
+                type: 'request-start',
+                store: store.id,
+                operation: operation
+            });
         },
-    },
-    constructor: function (config) {
-        //<debug>
-        console.log('✅ BaseStore.constructor', config);
-        //</debug>
-        const me = this;
-        me.callParent([config]);
-        // me.addEventHandlers();
-    },
-    addEventHandlers() {
-        //<debug>
-        console.log('✅ BaseStore.addEventHandlers');
-        //</debug>
-        const me = this;
-    },
+        load: function(store, records, successful, operation) {
+            Ext.GlobalEvents.fireEvent('log-store-event', {
+                type: 'request-complete',
+                store: store.id,
+                success: successful,
+                count: records.length
+            });
+        },
+        exception: function(proxy, response, operation) {
+            Ext.GlobalEvents.fireEvent('log-store-event', {
+                type: 'request-error',
+                url: response.url,
+                status: response.status,
+                message: response.statusText
+            });
+        },
+        write: function(store, operation) {
+            Ext.GlobalEvents.fireEvent('log-store-event', {
+                type: 'write-complete',
+                action: operation.action,
+                store: store.id
+            });
+        }
+    }
 });

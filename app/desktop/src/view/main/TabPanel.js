@@ -20,9 +20,5 @@ Ext.define('JsDaysDataStore.view.main.TabPanel', {
         xtype: 'events-panel',
         title: 'Events',
         iconCls: 'x-fas fa-bolt'
-    }, {
-        xtype: 'performance-panel',
-        title: 'Performance',
-        iconCls: 'x-fas fa-tachometer-alt'
     }]
 });
